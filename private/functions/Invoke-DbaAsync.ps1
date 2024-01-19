@@ -292,6 +292,10 @@ function Invoke-DbaAsync {
                 }
                 Resolve-SqlError $Err
             }
+
+            #Clear parameters to allow for their reuse in subsequent calls
+            $cmd.Parameters.Clear()
+            
             if ($AppendServerInstance) {
                 #Basics from Chad Miller
                 $Column = New-Object Data.DataColumn
